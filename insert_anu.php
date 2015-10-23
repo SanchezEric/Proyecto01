@@ -6,20 +6,31 @@
 <!--  -->
     <script language="JavaScript" type="text/javascript">
 
- function animal(tick){
-      var sel=document.getElementsByName(tick.name);
-      document.getElementById('perros').style.display=(sel[0].checked)?'block':'none' ;
-      document.getElementById('gatos').style.display=(sel[1].checked)?'block':'none' ;
-      document.getElementById('pajaros').style.display=(sel[2].checked)?'block':'none' ;
-      document.getElementById('otros').style.display=(sel[3].checked)?'block':'none' ;
+
+      function animal(tick){
+        var sel=document.getElementsByName(tick.name);
+        document.getElementById('perros').style.display=(sel[0].checked)?'block':'none' ;
+        document.getElementById('gatos').style.display=(sel[1].checked)?'block':'none' ;
+        document.getElementById('pajaros').style.display=(sel[2].checked)?'block':'none' ;
+        document.getElementById('otros').style.display=(sel[3].checked)?'block':'none' ;
       }
-    function reiniciar(){
-      document.getElementById('perros').style.display='none';
-      document.getElementById('gatos').style.display='none';
-      document.getElementById('pajaros').style.display='none';
-      document.getElementById('otros').style.display='none';
-      document.getElementById('municipio').selected.value = '10';
-    }
+      
+      function myFunction() {
+        
+        //Reinicia el las cajas
+          document.getElementById("municipio").value = "16";
+          document.getElementById("Perros").value = "32";
+          document.getElementById("Gatos").value = "33";
+          document.getElementById("Pajaros").value = "34";
+          document.getElementById("Otros").value = "31";
+
+        //Reiniciar los radioB
+          var ele = document.getElementsByName("opcion");
+          // alert(ele);
+          for(var i=0;i<ele.length;i++) ele[i].checked = false;
+          document.getElementById("formulario").reset();
+        }
+
       // Funcion para reiniciar los valores de los select
 //       function myFunction() {
 //         // document.getElementsByName("municipio").value = "15";
@@ -68,6 +79,17 @@
       } 
 
 
+//reinicia los radiob
+      function reiniciar(){
+        //document.getElementById("formulario").reset();
+
+        var ele = document.getElementsByName("opcion");
+        // alert(ele);
+        for(var i=0;i<ele.length;i++) ele[i].checked = false;
+        document.getElementById("formulario").reset();
+
+
+        }
 
     </script>
 <!--  -->
@@ -1035,20 +1057,19 @@ function login(){
 	                <div class="nav" role="navigation">
 <div class="breadcrumbs">
     <ul>
-          <li class="home" itemscope itemtype="http://data-vocabulary.org/Breadcrumb">
-            <a href="http://animalear.com/" title="Ir a la p&aacute;gina inicial" itemprop="url"><span itemprop="title">Inicio</span></a>
-            <span>&gt; </span>
-          </li>
-           <li class="home" itemscope itemtype="http://data-vocabulary.org/Breadcrumb">
-            <a href="index.html" title="Ir a la p&aacute;gina Mascotas Perdidas" itemprop="url"><span itemprop="title">Mascotas_Perdidas</span></a>
-            <span>&gt; </span>
-          </li>
-
-
-
-
-
-            </ul>
+                	            <li class="home" itemscope itemtype="http://data-vocabulary.org/Breadcrumb">
+                            <a href="http://animalear.com/" title="Ir a la p&aacute;gina inicial" itemprop="url"><span itemprop="title">Inicio</span></a>
+                                        <span>&gt; </span>
+                        </li>
+                              <li class="home" itemscope itemtype="http://data-vocabulary.org/Breadcrumb">
+                            <a href="index.html" title="Ir a la p&aacute;gina Mascotas Perdidas" itemprop="url"><span itemprop="title">Mascotas_Perdidas</span></a>
+                                        <span>&gt; </span>
+                              </li>
+                    <li class="home" itemscope itemtype="http://data-vocabulary.org/Breadcrumb">
+              <a href="form_anu.html" title="Ir a la p&aacute;gina Introducir anuncios" itemprop="url"><span itemprop="title">Introducir_anuncios</span></a>
+              <span>&gt; </span>
+            </li>
+              </ul>
 </div>
 </div>
 	                <h1 class="extra-red">Mascotas Perdidas</h1>
@@ -1070,128 +1091,51 @@ function login(){
     <div class="page-title category-title">
     </div>
     <a href="form_anu.html">
-	<img id="banner-category" src="img\cate-revento.jpg" alt="anuncio"/>
+  <img id="banner-category" src="img\cate-revento.jpg" alt="anuncio"/>
     </a>
 <!-- Titulo -->
-        		<h2>Formulario</h2>
+        		<h2></h2>
 
-<div class="categories">
- <div id="formulario">
-    <p class="titulo2" align="center">Animales perdidos</p>
-    <br/>
-    <form action="animalear_bd.php" method="GET">
-      <table>
-        <tr>
-          <td class="titulo"><div class="centrarBotones" width="146" height="110">Elige un Municipio: </div>
-          </td>
-          <div class="centrarBotones">
-          <td><select name="municipio">
-            <option value="1">Barcelona</option>
-            <option value="2">Sant Feliu de Llobregat</option>
-            <option value="3">Sant Joan d'Espí</option>
-            <option value="4">El Prat de Llobregat</option>
-            <option value="5">L'Hospitalet de Llobregat</option>
-            <option value="6">Martorell</option>
-            <option value="7">Cornellà de Llobregat</option>
-            <option value="8">Castelldefels</option>
-            <option value="9">Viladecans</option>
-            <option value="10">Begues</option>
-            <option value="11">Castellbisbal</option>
-            <option value="12">Sant Sadurni d'Anoia</option>
-            <option value="13">Rubí</option>
-            <option value="14">Sant Cugar del Vallès</option>
-            <option value="15">Sitges</option>
-            <option value="" selected>Todos</option>
-          </select>
-          </div><br/><br/>
-          </td>
-        </tr>
-        <tr>
-          <td class="titulo"><div class="centrarBotones">Tipo de animal:</div>        
-          </td>
-          <td>
-            <div class="centrarBotones">
-            <input type="radio" class="radio" name="opcion" value="1" onClick="animal(this)">Perros
-            <input type="radio" class="radio" name="opcion" value="2" onClick="animal(this)">Gatos
-            <input type="radio" class="radio" name="opcion" value="3" onClick="animal(this)">Pajaros
-            <input type="radio" class="radio" name="opcion" value="4" onClick="animal(this)">Otros
-            </div>
-            <br/><br/>
-          </td>
-        </tr>
-        <tr>
-          <td class="titulo"> <div class="centrarBotones">Raza:</div>
-          </td>
-          <td>
-            <div id="perros" style="display:none;" class="centrarBotones">
-            <select name="perros">
-              <option value="8">Bòxer</option>
-              <option value="9">Pastor alemán</option>
-              <option value="10">Golden Retriever</option>
-              <option value="11">Husky</option>
-              <option value="12">Border Collie</option>
-              <option value="13">Cruzado</option>
-              <option value="14">Beagle</option>
-              <option value="27">Otros</option>
-              <option value="" selected>Todos</option>
-            </select>
-            </div>
-            <div id="gatos" style="display:none;" class="centrarBotones">
-            <select name="gatos">
-              <option value="15">Persa</option>
-              <option value="16">Siamés</option>
-              <option value="17">Común</option>
-              <option value="18">Abisini</option>
-              <option value="19">Bobtail</option>
-              <option value="28">Otros</option>
-              <option value="" selected>Todos</option>
-            </select>
-            </div>
-            <div id="pajaros" style="display:none;" class="centrarBotones">
-            <select name="pajaros">
-               <option value="20">Canario</option>
-               <option value="21">Periquito</option>
-               <option value="29">Otros</option>
-               <option value="" selected>Todos</option>
-            </select>
-            </div>
-            <div id="otros" style="display:none; class="centrarBotones"">
-            <select name="otros">
-              <option value="22">Hurón</option>
-              <option value="23">Conejo</option>
-              <option value="24">Hàmster</option>
-              <option value="25">Tejón</option>
-              <option value="26">Pato</option>
-              <option value="30">Otros</option>
-              <option value="" selected>Todos</option>
-            </select>
-            </div>
+<div >
 
-          </td>
-        </tr>
 
-      </table>
-      <div class="centrarBotones">
-          <!-- Boton enviar -->
-      <a>
-        <!-- <input  value="Enviar" class="button blue radius" onclick="verAnuncios()"> -->
-        <input type="submit" value="Enviar" class="button blue radius">
-            <!-- Enviar -->
-      </a>
-          <!-- Boton cancelar <a href="#" class="button yellow radius">-->
-      <br>
-      <a >
-        <input type="reset" value="Cancelar" onClick="reiniciar()" class="button yellow radius">
-        
-      </a>
+<div id="anun" style="display:block";>
+<?php
+  //Datos que recibimos del formulario
+  $rollo = $_REQUEST['rollo'];
+  $titul = $_REQUEST['titul'];
+  $perros = $_REQUEST['perros'];
+  $gatos = $_REQUEST['gatos'];
+  $pajaros = $_REQUEST['pajaros'];
+  $otros = $_REQUEST['otros'];
+  $municipio = $_REQUEST['municipio']; 
+  $contacto = $_REQUEST['contacto'];
+  $fecha = $_REQUEST['fecha'];
+  $anu_tip = $_REQUEST['anu_tip'];
+  //////////////////////////////////////////////////////////////////////
+  //////////////////////////////////////////////////////////////////////
+  $con = mysqli_connect('localhost', 'root', '', 'bd_botiga_animals'); // conectamos a la base de datos
+  if($con == false){  //si falla la conexion a la base de datos mostramos un mensaje
+      echo "La conexión ha fallado"; 
+       
+  } else {
+    if(!empty($perros)){
+      mysqli_query($con, "INSERT INTO tbl_anunci (anu_contingut,anu_nom,anu_data,raca_id,mun_id,contact_id,anu_tipus) VALUES ('$rollo','$titul','$fecha','$perros','$municipio','$contacto','$anu_tip')");  
+    } else if (!empty($gatos)){
+      mysqli_query($con, "INSERT INTO tbl_anunci (anu_contingut,anu_nom,anu_data,raca_id,mun_id,contact_id,anu_tipus) VALUES ('$rollo','$titul','$fecha','$gatos','$municipio','$contacto','$anu_tip')");
+    } else if (!empty($pajaros)){
+      mysqli_query($con, "INSERT INTO tbl_anunci (anu_contingut,anu_nom,anu_data,raca_id,mun_id,contact_id,anu_tipus) VALUES ('$rollo','$titul','$fecha','$pajaros','$municipio','$contacto','$anu_tip')");
+    } else {
+      mysqli_query($con, "INSERT INTO tbl_anunci (anu_contingut,anu_nom,anu_data,raca_id,mun_id,contact_id,anu_tipus) VALUES ('$rollo','$titul','$fecha','$otros','$municipio','$contacto','$anu_tip')");
+    }
+  }
+  mysqli_close($con);//cerramos la conexión con la base de datos
+?>
+<p>Se han introducido los datos correctamente.</p>
+<button type="button" class="button yellow radius" onclick="location.href='index.html'")>volver</button>
+
+<br><br><br><br>
 </div>
-      </form>
-    </div>
-
-
-
-
-
 
 
 
